@@ -6,22 +6,20 @@
 
 ## **Task 1:** 
 ### LinearRegression().fit()
-Given test data, LinearRegression().fit() minimizes the square difference between the model and the data to find the weights and bias of a regression that yield the most accurate results. In the case of a simple regression, this happens to be the 'line of best fit'.
+Given test data, LinearRegression().fit() minimises the square difference between the model and the data to find the weights and bias of a regression that yield the most accurate results. In the case of a simple regression, this happens to be the 'line of best fit'.
 
 ![multivariable_reg](./imgs/multivariable_reg.png)
 
-To calculate the aforementioned 'accuracy' of a set of weights and bias, the MSE (Mean Squared Error) is used. LinearRegression().fit() aims to reduce this MSE as much as possible to result in the most accurate set of weights and bias that it can acheive.
+To calculate the aforementioned 'accuracy' of a set of weights and bias, the MSE (Mean Squared Error) is used. LinearRegression().fit() aims to reduce this MSE as much as possible to result in the most accurate set of weights and bias that it can achieve.
 
 ---
 
 ## **Task 2:**
 
-### Calculating Bias and Variance
-To calculate bias and variance, we used the following formulae/codes:  
-
+### Bias
 Bias is one of two ways of measuring the accuracy of an ML model. It represents the difference between the 'expected value' or 'average value' of the model and the actual value we are trying to predict.
 
-Bias is calculated by taking the square root of Bias^2 using the formula:  
+Bias is calculated by taking the square root of Bias^2^ using the formula:  
 
 ![Bias2_formula](./imgs/bias.png)
 
@@ -33,7 +31,11 @@ bias = np.sqrt(bias2)
 ```
 where predMatrix is the collection of y_predict from the trained models for each degree
 
-Variance is the other way in which the accuracy of an ML model is measured. It represent the 'variability' of the modell's prediction, i.e. how much the predicted values vary for different realizations of that model.
+![Bias_graph](./imgs/bgraph.png)
+
+### Variance
+
+Variance is the other way in which the accuracy of an ML model is measured. It represent the 'variability' of the model's prediction, i.e. how much the predicted values vary for different realisations of that model.
 
 Variance is calculated using the formula: 
 
@@ -44,7 +46,9 @@ Code:
 variance = np.mean(np.var(predMatrix, axis = 0))
 ```
 where predMatrix is the collection of y_predict from the trained models for each degree
-Where np.var is numpy's buitin to function compute variance
+Where np.var is numpy's builtin to function compute variance
+
+![Variance_graph](./imgs/vgraph.png)
 
 ---
 
@@ -57,16 +61,26 @@ To calculate irreducible error, we used the formula:
 
 ![Irreducible_formula](./imgs/irredErr.png)
 
+### Plotting irreducible error
+
+![Irreducible_formula](./imgs/irredgraph.png)
+
+
+
 ---
 
 ## **Task 4:**
-### Plotting Bias^2 - Variance graph
+### Plotting Bias^2^ - Variance graph
 
 ![bias-variance-totalerror](./imgs/bvtgraph.png)
 
 ### Understanding the graph:
 
-In this graph we display three different values: bias^2, variance and total error. Total error represents the total
+In this graph we display three different values: Bias^2^, Variance and Total Error. Total error, as the name suggests, represents the total of Bias^2^, Variance, and Irreducible error. This is what we aim to minimise when optimising our model. We observe that as the 'degree' or the complexity of our model increases, the variance increases and the bias^2^ decreases (in an ideal situation it would continuously decrease but here we observe an increase towards the end).  
+
+At lower degrees, the model fails to accurately represent the training data and the test data. This is due to the lower number of features not being able to fully represent the data being provided. Due to this we observe a high bias. The low observed variance is due to the model being consistent but inaccurate which leads to a lower variance but a higher bias.
+
+At higher degrees the model 'overfits', i.e. the model represents the training data very accurately but with the loss of generality. This results in the model performing poorly on test data or any data other than the data it was trained with. This leads to a very low bias as it very closely represents the training data but an high variance as it fails to remain consistent due to the differences between different training sets. 
 
 ### Tabulating the results:
 
@@ -92,5 +106,3 @@ In this graph we display three different values: bias^2, variance and total erro
 |       18 |  351.453  |   155541   |
 |       19 |  440.471  |   155380   |
 |       20 |  451.163  |   161849   |
-
----
