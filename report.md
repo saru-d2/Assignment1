@@ -66,7 +66,7 @@ To calculate irreducible error, we used the formula:
 
 ### Understanding the graph:
 
-In this graph we display three different values 
+In this graph we display three different values: bias^2, variance and total error. Total error represents the total
 
 ### Tabulating the results:
 
