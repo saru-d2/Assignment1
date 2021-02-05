@@ -6,7 +6,7 @@
 
 ## **Task 1:** 
 ### LinearRegression().fit()
-Given test data, LinearRegression().fit() minimises the square difference between the model and the data to find the weights and bias of a regression that yield the most accurate results. In the case of a simple regression, this happens to be the 'line of best fit'.
+Given test data, LinearRegression().fit() minimises the square difference between the model and the data to find the weights and bias of a regression that yield the most accurate results. In the case of a simple regression, this happens to be the 'line of best fit'. It uses gradient descent.
 
 ![multivariable_reg](./imgs/multivariable_reg.png)
 
@@ -27,7 +27,7 @@ Code:
 
 ```python
 bias2 = np.mean( (np.mean(predMatrix, axis = 0) - testData[:, 1] ) ** 2 )
-bias = np.sqrt(bias2)
+bias = np.mean( abs(np.mean(predMatrix, axis = 0) - testData[:, 1] ))
 ```
 where predMatrix is the collection of y_predict from the trained models for each degree
 
@@ -82,27 +82,33 @@ At lower degrees, the model fails to accurately represent the training data and 
 
 At higher degrees the model 'overfits', i.e. the model represents the training data very accurately but with the loss of generality. This results in the model performing poorly on test data or any data other than the data it was trained with. This leads to a very low bias as it very closely represents the training data but an high variance as it fails to remain consistent due to the differences between different training sets. 
 
+### Understanding the type of data:
+
+The bias is high for models that represent polynomials of lower degrees as it underfits the data (is not complex enough to represent the data).
+
+The variance is higher for more complex models as they overfit. **Variance** tells you the degree of spread in your data set, and as overfitting occurs, it leads to the predictions of the models to be increasingly chaotic and spread out.
+
 ### Tabulating the results:
 
-|   degree |      bias |   variance |
-|---------:|----------:|-----------:|
-|        1 | 1001.39   |    22550.4 |
-|        2 |  978.315  |    37427.8 |
-|        3 |   93.0622 |    40282.1 |
-|        4 |   89.8518 |    44151   |
-|        5 |   87.3383 |    49296.9 |
-|        6 |   86.417  |    59239.7 |
-|        7 |   94.5778 |    89097.7 |
-|        8 |  100.216  |   100876   |
-|        9 |   95.924  |   124155   |
-|       10 |  107.308  |   134876   |
-|       11 |   99.785  |   142946   |
-|       12 |  152.416  |   150638   |
-|       13 |  117.411  |   153307   |
-|       14 |  183.001  |   147355   |
-|       15 |  241.782  |   146984   |
-|       16 |  260.298  |   151108   |
-|       17 |  337.601  |   150028   |
-|       18 |  351.453  |   155541   |
-|       19 |  440.471  |   155380   |
-|       20 |  451.163  |   161849   |
+|   degree |     bias |   variance |
+|---------:|---------:|-----------:|
+|        1 | 820.007  |    38675.6 |
+|        2 | 810.233  |    55083.9 |
+|        3 |  67.7832 |    58210.8 |
+|        4 |  73.8759 |    71113.8 |
+|        5 |  73.316  |    91106.6 |
+|        6 |  72.2846 |   108828   |
+|        7 |  78.8863 |   116725   |
+|        8 |  81.5498 |   144484   |
+|        9 |  84.9207 |   158619   |
+|       10 |  81.3285 |   159168   |
+|       11 |  80.4445 |   170230   |
+|       12 | 110.248  |   173786   |
+|       13 |  77.2448 |   166664   |
+|       14 | 117.41   |   163289   |
+|       15 | 155.396  |   169819   |
+|       16 | 161.111  |   182661   |
+|       17 | 227.113  |   186223   |
+|       18 | 228.15   |   197952   |
+|       19 | 297.603  |   198454   |
+|       20 | 296.723  |   208133   |
