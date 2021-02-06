@@ -82,6 +82,8 @@ At lower degrees, the model fails to accurately represent the training data and 
 
 At higher degrees the model 'over-fits', i.e. the model represents the training data very accurately but with the loss of generality. This results in the model performing poorly on test data or any data other than the data it was trained with. This leads to a higher bias (than the middle degrees) as it conforms too much to  the training data but not the test data,  and a high variance as the predictions of the models become less precise and more spread out. 
 
+Observing the graph, we find that the total error reaches a minimum at degree=3. Hence, the data is best represented by a 3^rd^ degree function.
+
 ### Understanding the type of data:
 
 The bias is high for models that represent polynomials of lower degrees as it under-fits the data (is not complex enough to represent the data).
