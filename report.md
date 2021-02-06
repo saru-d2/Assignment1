@@ -19,7 +19,7 @@ To calculate the aforementioned 'accuracy' of a set of weights and bias, the MSE
 ### Bias
 Bias is one of two ways of measuring the accuracy of an ML model. It represents the difference between the 'expected value' or 'average value' of the model and the actual value we are trying to predict.
 
-Bias is calculated by taking the square root of Bias^2^ using the formula:  
+Bias is calculated by using the absolute value function in place of the square in the Bias^2^ formula:  
 
 ![Bias2_formula](./imgs/bias.png)
 
@@ -76,17 +76,19 @@ To calculate irreducible error, we used the formula:
 
 ### Understanding the graph:
 
-In this graph we display three different values: Bias^2^, Variance and Total Error. Total error, as the name suggests, represents the total of Bias^2^, Variance, and Irreducible error. This is what we aim to minimise when optimising our model. We observe that as the 'degree' or the complexity of our model increases, the variance increases and the bias^2^ decreases (in an ideal situation it would continuously decrease but here we observe an increase towards the end).  
+In this graph we display three different values: Bias^2^, Variance and Total Error. Total error, as the name suggests, represents the total of Bias^2^, Variance, and Irreducible error. This is what we aim to minimise when optimising our model. We observe that as the 'degree' or the complexity of our model increases, the variance increases and the bias^2^ decreases initially and increases at the end.  
 
 At lower degrees, the model fails to accurately represent the training data and the test data. This is due to the lower number of features not being able to fully represent the data being provided. Due to this we observe a high bias. The low observed variance is due to the model being consistent but inaccurate which leads to a lower variance but a higher bias.
 
 At higher degrees the model 'overfits', i.e. the model represents the training data very accurately but with the loss of generality. This results in the model performing poorly on test data or any data other than the data it was trained with. This leads to a very low bias as it very closely represents the training data but an high variance as it fails to remain consistent due to the differences between different training sets. 
 
+At even higher degrees we observe a more extreme case of overfitting which leads to the value of Bias^2^ increasing further. This is due to the extreme extent of overfitting and the extreme loss of generality which causes the average of the different realisations to be an inaccurate representation of the training data which causes bias to go up as well.
+
 ### Understanding the type of data:
 
 The bias is high for models that represent polynomials of lower degrees as it underfits the data (is not complex enough to represent the data).
 
-The variance is higher for more complex models as they overfit. **Variance** tells you the degree of spread in your data set, and as overfitting occurs, it leads to the predictions of the models to be increasingly chaotic and spread out.
+The variance is higher for more complex models as they overfit. Variance tells you the degree of spread in your data set, and as overfitting occurs, it leads to the predictions of the models to be increasingly chaotic and spread out.
 
 ### Tabulating the results:
 
